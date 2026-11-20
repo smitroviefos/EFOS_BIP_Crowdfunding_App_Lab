@@ -1,0 +1,2 @@
+# EFOS_BIP_Crowdfunding_App_Lab
+The Blended Intensive Programme (BIP), titled Global Crowdfunding Business Application Lab: From User Requirements to Deployment, is a collaborative virtual and physical exchange designed for Entrepreneurship, Marketing and Business Informatics students. Led by the J. J. Strossmayer University of Osijek, Faculty of Economics and Business.
