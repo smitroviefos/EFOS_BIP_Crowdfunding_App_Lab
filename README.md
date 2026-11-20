@@ -8,7 +8,7 @@ The Blended Intensive Programme (BIP), titled **Global Crowdfunding Business App
 | 📅 **When** | Virtual kick-off: 20 November 2026 · Physical week: **7–11 December 2026** |
 | 🎓 **Credits** | 3 ECTS |
 | 👥 **Teams** | International teams of 5–7 students |
-| 📧 **Contact** | Saša Mitrović, PhD – [sasa.mitrovic@efos.hr](mailto:sasa.mitrovic@efos.hr) |
+| 📧 **BIP coordinator** | Saša Mitrović, PhD – [sasa.mitrovic@efos.hr](mailto:sasa.mitrovic@efos.hr) |
 
 ---
 
