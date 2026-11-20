@@ -18,7 +18,7 @@ The Blended Intensive Programme (BIP), titled **Global Crowdfunding Business App
 - [Programme – physical week in Osijek](#-programme--physical-week-in-osijek)
 - [Learning outcomes and assessment](#-learning-outcomes-and-assessment)
 - [Participating universities](#-participating-universities)
-- [BIP materials](#-course-materials)
+- [BIP materials](#-bip-materials)
 - [Before you arrive – checklist](#-before-you-arrive--checklist)
 - [Tools and downloads](#-tools-and-downloads)
 - [Optional: set up at home on Windows](#-optional-set-up-at-home-on-windows)
@@ -137,13 +137,24 @@ By the end of the BIP you will be able to:
 
 ---
 
-## 📂 Course materials
+## 📂 BIP materials
 
-| Session | Material |
-|---|---|
-| Virtual kick-off (20 Nov 2026) | [Virtual Session slides (PDF)](0_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Virtual%20Session.pdf) |
+All slides are in PDF. Each day has its own folder in this repository.
 
-*More slides will be added during the week.*
+| Day | Session | Lecturer | Slides |
+|---|---|---|---|
+| Virtual · Fri 20 Nov | Virtual kick-off: team building and global market analysis | Saša Mitrović, PhD | [📄 PDF](0_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Virtual%20Session.pdf) |
+| Day 1 · Mon 7 Dec | Lecture 1: Agile in Practice | Saša Mitrović, PhD | [📄 PDF](Day_1/01_1_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Lecture%201%20Agile%20in%20Practice.pdf) |
+| Day 1 · Mon 7 Dec | Lecture 2: Building Business Apps with AI Assistants | Saša Mitrović, PhD | [📄 PDF](Day_1/01_2_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Lecture%202%20Building%20Business%20Apps%20with%20AI%20Assistants.pdf) |
+| Day 2 · Tue 8 Dec | Workshop: Coding Sprint 1 | Tomislav Jakopec, PhD | [📄 PDF](Day_2/02_S1_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Workshop%20Coding%20Sprint%201.pdf) |
+| Day 2 · Tue 8 Dec | Workshop: Coding Sprint 2 | Saša Mitrović, PhD | [📄 PDF](Day_2/02_S2_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Workshop%20Coding%20Sprint%202.pdf) |
+| Day 3 · Wed 9 Dec | Lecture 3: Business application wireframing – creating a skeletal blueprint of the app’s screens, buttons and user flows | Anamarija Delić, PhD | ⏳ TBA |
+| Day 3 · Wed 9 Dec | Lecture 4: Crowdfunding marketing campaigns | Karla Bilandžić-Tanasić | ⏳ TBA |
+| Day 4 · Thu 10 Dec | Workshop: Coding Sprint 3 | Saša Mitrović, PhD | [📄 PDF](Day_4/04_S3_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Workshop%20Coding%20Sprint%203.pdf) |
+
+📁 Folders: [Day_1](Day_1) · [Day_2](Day_2) · [Day_3](Day_3) · [Day_4](Day_4)
+
+*Day 3 materials will be added after the lectures.*
 
 ---
 
