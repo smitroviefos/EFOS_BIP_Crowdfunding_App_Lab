@@ -179,7 +179,8 @@ All slides are in PDF. Each day has its own folder in this repository.
 | [JetBrains Rider](https://www.jetbrains.com/rider/download/) | IDE for C# and ASP.NET Core – free for non-commercial use, also via the [JetBrains student licence](https://www.jetbrains.com/community/education/#students) | ✅ | ✅ |
 | [.NET SDK](https://dotnet.microsoft.com/download) | Needed to build and run the app (included with Visual Studio) | ✅ | ✅ |
 | [SQL Server 2025](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) | Database – free Express or Developer edition | ✅ | via Docker |
-| [SQL Server Management Studio (SSMS) 22](https://learn.microsoft.com/ssms/install/install) | Manage and query the database | ✅ | ❌ Windows only |
+| [SQL Server Management Studio (SSMS) 22](https://learn.microsoft.com/ssms/install/install) | Manage and query the database | ✅ | ❌ JB DataGrip on Mac |
+| [JetBrains DataGrip](https://www.jetbrains.com/datagrip/download/) | Manage and query the database – free for non-commercial use, also via the [JetBrains student licence](https://www.jetbrains.com/community/education/#students) | ✅ | ✅ |
 | [VS Code](https://code.visualstudio.com/) + [MSSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) | Lightweight editor and database client | ✅ | ✅ |
 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | Runs SQL Server in a container on a Mac | – | ✅ |
 | [Git](https://git-scm.com/downloads) | Version control | ✅ | ✅ |
