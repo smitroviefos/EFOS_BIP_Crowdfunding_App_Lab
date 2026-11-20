@@ -1,5 +1,5 @@
 # EFOS Global Crowdfunding Business Application Lab: From User Requirements to Deployment
-**The objective of this programme is not to turn everyone into a software developer within five days, but rather to encourage students from different academic backgrounds to collaborate, exchange knowledge and jointly develop an innovative business solution. You will be working in international and interdisciplinary teams of five to seven students, where each team member will contribute according to their knowledge, skills and academic background. **
+**The objective of this programme is not to turn everyone into a software developer within five days, but rather to encourage students from different academic backgrounds to collaborate, exchange knowledge and jointly develop an innovative business solution. You will be working in international and interdisciplinary teams of five to seven students, where each team member will contribute according to their knowledge, skills and academic background.**
 
 The Blended Intensive Programme (BIP), titled **Global Crowdfunding Business Application Lab: From User Requirements to Deployment**, is a collaborative virtual and physical exchange designed for Entrepreneurship, Marketing and Business Informatics students. Led by the J. J. Strossmayer University of Osijek, Faculty of Economics and Business.
 
