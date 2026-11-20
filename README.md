@@ -52,7 +52,7 @@ All sessions take place at **EFOS, Trg Ljudevita Gaja 7, Osijek**.
 | Time | Activity | Location |
 |---|---|---|
 | 10:00 – 11:00 | 🌟 **Welcome to EFOS: Meet, Connect & Explore**<br>Official programme opening, in-person introductions and a brief recap of the virtual component | Aula (Lower Level) |
-| 11:00 – 11:15 | ☕ Coffee, Conversations & Connections | Aula (Upper Level) |
+| 11:00 – 11:30 | ☕ Coffee, Conversations & Connections | Aula (Upper Level) |
 | 11:30 – 13:00 | 📘 **Lecture 1:** Agile Development and Sprints in practice<br>*Saša Mitrović, PhD* | Room 11 |
 | 13:00 – 14:00 | 🍽️ Recharge, Connect – Lunch break | Room 10 |
 | 14:00 – 15:00 | 🤖 **Lecture 2:** Business application development with AI assistants<br>*Saša Mitrović, PhD* | Room 11 |
