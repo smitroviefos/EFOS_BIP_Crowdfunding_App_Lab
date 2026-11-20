@@ -198,7 +198,7 @@ SQL Server has no native macOS version, so on a Mac you run it in a **Docker con
    dotnet --version
    ```
 
-### Step 2 – Install Docker Desktop
+### Step 2 – Install Docker Desktop (or just use SQLLite that comes witj JetBrains Rider)
 
 1. Download **[Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/)** – choose **Apple silicon** or **Intel chip** to match your Mac ( → *About This Mac*).
 2. **Apple Silicon only:** install Rosetta 2 in Terminal:
