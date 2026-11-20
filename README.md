@@ -18,7 +18,7 @@ The Blended Intensive Programme (BIP), titled **Global Crowdfunding Business App
 - [Programme – physical week in Osijek](#-programme--physical-week-in-osijek)
 - [Learning outcomes and assessment](#-learning-outcomes-and-assessment)
 - [Participating universities](#-participating-universities)
-- [Course materials](#-course-materials)
+- [BIP materials](#-course-materials)
 - [Before you arrive – checklist](#-before-you-arrive--checklist)
 - [Tools and downloads](#-tools-and-downloads)
 - [Optional: set up at home on Windows](#-optional-set-up-at-home-on-windows)
