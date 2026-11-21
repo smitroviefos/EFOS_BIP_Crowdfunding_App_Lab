@@ -211,7 +211,10 @@ SQL Server has no native macOS version, so on a Mac you run it in a **Docker con
    dotnet --version
    ```
 
-### Step 2 – Install Docker Desktop (or just use SQLite that comes with JetBrains Rider)
+### Step 2 – Install Docker Desktop
+
+> 💡 Prefer not to use Docker? You can use **SQLite** instead – see [Alternative: SQLite instead of SQL Server](#alternative-sqlite-instead-of-sql-server) below. Read it first: a few things work differently.
+
 
 1. Download **[Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/)** – choose **Apple silicon** or **Intel chip** to match your Mac ( → *About This Mac*).
 2. **Apple Silicon only:** install Rosetta 2 in Terminal:
@@ -279,6 +282,68 @@ Server=localhost,1433;Database=CrowdfundingDb;User Id=sa;Password=YourStrong!Pas
 | Cannot log in | Remember that `MSSQL_SA_PASSWORD` is only applied when the container is first created. Remove the container **and** the volume to start fresh: `docker rm -f sql2025 && docker volume rm sql2025-data`. |
 
 📖 More detail: [Microsoft – Run SQL Server Linux container images with Docker](https://learn.microsoft.com/sql/linux/quickstart-install-connect-docker)
+
+### Alternative: SQLite instead of SQL Server
+
+**SQLite** is a database in a single file – no server, no Docker, no password. It is handy for practising at home on a Mac, but the BIP projects (and the SkillPledge sample app) use **SQL Server**, so a few things have to change.
+
+> ⚠️ **One database per team.** EF Core migrations are written for one database provider. If one teammate uses SQLite and the others SQL Server, the migrations clash. Use SQLite only for your own practice project – or agree on it as a whole team.
+
+**1. Swap the NuGet package** (in the folder with the `.csproj` file, or in Rider: *Tools → NuGet*)
+
+```bash
+dotnet remove package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+```
+
+Keep the same major version as your other EF Core packages (e.g. all `10.0.x`).
+
+**2. Change one line in `Program.cs`**
+
+```csharp
+// before
+options.UseSqlServer(connectionString)
+// after
+options.UseSqlite(connectionString)
+```
+
+**3. Change the connection string** in `appsettings.json` (no password, so no user secrets needed)
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Data Source=app.db"
+}
+```
+
+The file `app.db` is created in the project folder. Keep it out of Git – add these lines to `.gitignore`:
+
+```text
+*.db
+*.db-shm
+*.db-wal
+```
+
+**4. Create new migrations** – the existing ones were generated for SQL Server (`nvarchar`, `IDENTITY` …) and do not work with SQLite. Delete the `Data/Migrations` folder, then:
+
+```bash
+dotnet ef migrations add InitialCreate -o Data/Migrations
+dotnet ef database update
+```
+
+(SkillPledge applies migrations by itself on start-up in Development, so `database update` is optional there.)
+
+**5. Know the differences**
+
+| | SQL Server | SQLite |
+|---|---|---|
+| Search with `Title.Contains("game")` | Not case-sensitive – finds “Game” | **Case-sensitive** – does not find “Game”. Use `EF.Functions.Like(p.Title, $"%{term}%")` instead |
+| `decimal` columns (prices, amounts) | Fully supported | `Sum`, `Average` and `OrderBy` on `decimal` cannot be translated – use `double`, or calculate in memory after `ToListAsync()` |
+| `DateTimeOffset` | Fully supported | Cannot be sorted or compared in queries – use `DateTime` |
+| Start again with an empty database | Drop the database | Delete the `app.db` file and run the app again |
+| Look at the data | SSMS, DataGrip, Rider | Rider or DataGrip: *Database → + → Data Source → SQLite* and pick the `.db` file |
+
+> 💡 **Tip:** a new project created on a Mac with `dotnet new mvc --auth Individual` uses SQLite by default. Add `--use-local-db` only on Windows if you want LocalDB.
+
 
 ---
 
