@@ -147,7 +147,7 @@ All slides are in PDF. Each day has its own folder in this repository.
 | Virtual · Fri 20 Nov | Virtual kick-off: team building and global market analysis | Saša Mitrović, PhD | [📄 PDF](0_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Virtual%20Session.pdf) |
 | Day 1 · Mon 7 Dec | Lecture 1: Agile in Practice | Saša Mitrović, PhD | [📄 PDF](Day_1/01_1_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Lecture%201%20Agile%20in%20Practice.pdf) |
 | Day 1 · Mon 7 Dec | Lecture 2: Building Business Apps with AI Assistants | Saša Mitrović, PhD | [📄 PDF](Day_1/01_2_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Lecture%202%20Building%20Business%20Apps%20with%20AI%20Assistants.pdf) |
-| Day 2 · Tue 8 Dec | Tutorial: GitHub Desktop – Git without the command line | Saša Mitrović, PhD | [📄 PDF](Tutorials/BIP%20Crowdfunding%20Lab%20%E2%80%93%20Tutorial%20GitHub%20Desktop.pdf) |
+| Day 2 · Tue 8 Dec | Tutorial: GitHub Desktop – Git without the command line | Saša Mitrović, PhD | [📄 PDF](BIP%20Crowdfunding%20Lab%20%E2%80%93%20Tutorial%20GitHub%20Desktop.pdf) |
 | Day 2 · Tue 8 Dec | Workshop: Coding Sprint 1 | Tomislav Jakopec, PhD | [📄 PDF](Day_2/02_S1_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Workshop%20Coding%20Sprint%201.pdf) |
 | Day 2 · Tue 8 Dec | Workshop: Coding Sprint 2 | Saša Mitrović, PhD | [📄 PDF](Day_2/02_S2_BIP%20Crowdfunding%20Lab%20%E2%80%93%20Workshop%20Coding%20Sprint%202.pdf) |
 | Day 3 · Wed 9 Dec | Lecture 3: Business application wireframing – creating a skeletal blueprint of the app’s screens, buttons and user flows | Anamarija Delić, PhD | ⏳ TBA |
