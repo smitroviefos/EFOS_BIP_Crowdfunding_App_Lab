@@ -1,0 +1,119 @@
+@model Project
+@{
+    ViewData["Title"] = Model.Title;
+    var currentUserId = ViewData["CurrentUserId"] as string;
+    var isOwner = currentUserId is not null && currentUserId == Model.OwnerId;
+    var canPledge = currentUserId is not null && !isOwner && Model.Status == ProjectStatus.Open;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Projects</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+    </ol>
+</nav>
+
+<div class="d-flex flex-wrap align-items-center gap-3 mb-2">
+    <h1 class="mb-0">@Model.Title</h1>
+    <partial name="_StatusBadge" model="Model.Status" />
+    @if (isOwner)
+    {
+        <div class="ms-auto d-flex gap-2">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary btn-sm">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+        </div>
+    }
+</div>
+<p class="text-muted">
+    Posted by @(Model.Owner?.UserName ?? "unknown") on @Model.CreatedAt.ToLocalTime().ToString("d MMM yyyy")
+    · Deadline @Model.Deadline.ToString("d MMM yyyy")
+</p>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <h4>About the project</h4>
+        <p>@Model.Description</p>
+
+        <h4 class="mt-4">Pledges</h4>
+        @if (!Model.Pledges.Any())
+        {
+            <p class="text-muted">No pledges yet – be the first to offer your knowledge.</p>
+        }
+        else
+        {
+            <table class="table align-middle">
+                <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Skill</th>
+                    <th class="text-end">Hours</th>
+                    <th>Message</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var pledge in Model.Pledges.OrderByDescending(p => p.CreatedAt))
+                {
+                    <tr>
+                        <td>@pledge.User?.UserName</td>
+                        <td><span class="skill-chip">@pledge.Skill?.Name</span></td>
+                        <td class="text-end">@pledge.Hours</td>
+                        <td>@pledge.Message</td>
+                        <td class="text-end">
+                            @if (pledge.UserId == currentUserId)
+                            {
+                                <form asp-controller="Pledges" asp-action="Withdraw" asp-route-id="@pledge.Id" method="post"
+                                      onsubmit="return confirm('Withdraw your pledge?');">
+                                    <button type="submit" class="btn btn-link btn-sm text-danger p-0">Withdraw</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <p class="small text-muted">
+                Total: <strong>@Model.Pledges.Sum(p => p.Hours) hours</strong> of knowledge pledged.
+            </p>
+        }
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Skills needed</h5>
+                <div class="mb-3">
+                    @foreach (var skill in Model.SkillsNeeded.OrderBy(s => s.Name))
+                    {
+                        var covered = Model.Pledges.Any(p => p.SkillId == skill.Id);
+                        <span class="skill-chip @(covered ? "covered" : "")">@(covered ? "✓ " : "")@skill.Name</span>
+                    }
+                </div>
+
+                <partial name="_SkillsProgress" model="Model" />
+
+                <div class="mt-3">
+                    @if (canPledge)
+                    {
+                        <a asp-controller="Pledges" asp-action="Create" asp-route-projectId="@Model.Id"
+                           class="btn btn-primary w-100">Offer your knowledge</a>
+                    }
+                    else if (currentUserId is null)
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-primary w-100">Log in to offer your knowledge</a>
+                    }
+                    else if (isOwner)
+                    {
+                        <p class="small text-muted mb-0">This is your project. Share it so other students can back it.</p>
+                    }
+                    else
+                    {
+                        <p class="small text-muted mb-0">This project is not open for pledges.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-outline-secondary mt-4">← Back to projects</a>

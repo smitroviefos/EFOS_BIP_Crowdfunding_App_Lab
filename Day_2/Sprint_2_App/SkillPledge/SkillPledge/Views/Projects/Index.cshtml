@@ -1,0 +1,83 @@
+@model IEnumerable<Project>
+@{
+    ViewData["Title"] = "Projects";
+    var search = ViewData["Search"] as string;
+    var skillOptions = (SelectList)ViewData["Skills"]!;
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+    <div>
+        <h1 class="mb-1">Projects looking for skills</h1>
+        <p class="text-muted mb-0">Back a project with your knowledge – not with money.</p>
+    </div>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <a asp-action="Create" class="btn btn-primary">+ Post a project</a>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-primary">Log in to post a project</a>
+    }
+</div>
+
+<form asp-action="Index" method="get" class="row g-2 align-items-end mb-4">
+    <div class="col-md-5">
+        <label for="search" class="form-label small fw-semibold">Search</label>
+        <input id="search" name="search" value="@search" class="form-control" placeholder="Title or description" />
+    </div>
+    <div class="col-md-4">
+        <label for="skillId" class="form-label small fw-semibold">Skill needed</label>
+        <select id="skillId" name="skillId" asp-items="skillOptions" class="form-select">
+            <option value="">All skills</option>
+        </select>
+    </div>
+    <div class="col-md-3 d-flex gap-2">
+        <button type="submit" class="btn btn-secondary flex-fill">Filter</button>
+        <a asp-action="Index" class="btn btn-outline-secondary flex-fill">Clear</a>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No projects found. Try another filter – or post the first one!</div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var project in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm project-card">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">@project.Title</h5>
+                            <partial name="_StatusBadge" model="project.Status" />
+                        </div>
+                        <p class="card-text text-muted small mb-2">
+                            by @(project.Owner?.UserName ?? "unknown") · deadline @project.Deadline.ToString("d MMM yyyy")
+                        </p>
+                        <p class="card-text">@project.Description</p>
+
+                        <div class="mt-auto">
+                            <p class="small fw-semibold mb-1">Skills needed</p>
+                            <div class="mb-3">
+                                @foreach (var skill in project.SkillsNeeded.OrderBy(s => s.Name))
+                                {
+                                    var covered = project.Pledges.Any(p => p.SkillId == skill.Id);
+                                    <span class="skill-chip @(covered ? "covered" : "")">@(covered ? "✓ " : "")@skill.Name</span>
+                                }
+                            </div>
+                            <div class="mb-3">
+                                <partial name="_SkillsProgress" model="project" />
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="small text-muted">@project.Pledges.Count pledge(s)</span>
+                                <a asp-action="Details" asp-route-id="@project.Id" class="btn btn-sm btn-primary">View project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

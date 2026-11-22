@@ -1,0 +1,16 @@
+@model Project
+@{
+    // Our version of the funding progress bar: how many of the needed skills have at least one pledge
+    var needed = Model.SkillsNeeded.Count;
+    var covered = Model.SkillsNeeded.Count(s => Model.Pledges.Any(p => p.SkillId == s.Id));
+    var percent = needed == 0 ? 0 : (int)Math.Round(100.0 * covered / needed);
+}
+<div class="skills-progress">
+    <div class="d-flex justify-content-between small mb-1">
+        <span class="fw-semibold">@covered of @needed skills covered</span>
+        <span class="text-muted">@percent%</span>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Skills covered" aria-valuenow="@percent" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" style="width: @percent%"></div>
+    </div>
+</div>
