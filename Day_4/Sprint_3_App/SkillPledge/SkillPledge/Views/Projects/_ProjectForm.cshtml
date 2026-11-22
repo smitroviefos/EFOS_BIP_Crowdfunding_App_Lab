@@ -1,0 +1,49 @@
+@model ProjectFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+<div class="mb-3">
+    <label asp-for="Title" class="form-label fw-semibold"></label>
+    <input asp-for="Title" class="form-control" placeholder="e.g. Pixel Rangers – a 2D platformer game" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label fw-semibold"></label>
+    <textarea asp-for="Description" class="form-control" rows="5"
+              placeholder="What are you building, and what help do you need?"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="Deadline" class="form-label fw-semibold"></label>
+        <input asp-for="Deadline" class="form-control" />
+        <span asp-validation-for="Deadline" class="text-danger"></span>
+    </div>
+
+    @if (ViewData["ShowStatus"] is true)
+    {
+        <div class="col-md-6 mb-3">
+            <label asp-for="Status" class="form-label fw-semibold"></label>
+            <select asp-for="Status" asp-items="Html.GetEnumSelectList<ProjectStatus>()" class="form-select"></select>
+        </div>
+    }
+</div>
+
+<fieldset class="mb-4">
+    <legend class="form-label fw-semibold fs-6">Skills needed</legend>
+    <div class="row row-cols-2 row-cols-md-3 g-2">
+        @foreach (var skill in Model.AvailableSkills)
+        {
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="SelectedSkillIds"
+                           value="@skill.Value" id="skill-@skill.Value" checked="@skill.Selected" />
+                    <label class="form-check-label" for="skill-@skill.Value">@skill.Text</label>
+                </div>
+            </div>
+        }
+    </div>
+    <span asp-validation-for="SelectedSkillIds" class="text-danger"></span>
+</fieldset>

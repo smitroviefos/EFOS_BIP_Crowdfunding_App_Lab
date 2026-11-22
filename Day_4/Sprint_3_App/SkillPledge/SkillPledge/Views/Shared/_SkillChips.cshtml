@@ -1,0 +1,7 @@
+@model Project
+@* Sprint 3: one place for the skill chips – covered skills are green with a ✓ *@
+@foreach (var skill in Model.SkillsNeeded.OrderBy(s => s.Name))
+{
+    var covered = Model.IsSkillCovered(skill.Id);
+    <span class="skill-chip @(covered ? "covered" : "")">@(covered ? "✓ " : "")@skill.Name</span>
+}

@@ -1,0 +1,54 @@
+@model PledgeFormViewModel
+@{
+    ViewData["Title"] = "Offer your knowledge";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Projects" asp-action="Index">Projects</a></li>
+        <li class="breadcrumb-item">
+            <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId">@Model.ProjectTitle</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Offer your knowledge</li>
+    </ol>
+</nav>
+
+<h1>Offer your knowledge</h1>
+<p class="text-muted">Back <strong>@Model.ProjectTitle</strong> with one of the skills it needs.</p>
+
+<div class="row">
+    <div class="col-lg-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+            <input type="hidden" asp-for="ProjectId" />
+
+            <div class="mb-3">
+                <label asp-for="SkillId" class="form-label fw-semibold"></label>
+                <select asp-for="SkillId" asp-items="Model.SkillOptions" class="form-select">
+                    <option value="">– choose a skill –</option>
+                </select>
+                <span asp-validation-for="SkillId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Hours" class="form-label fw-semibold"></label>
+                <input asp-for="Hours" class="form-control" min="1" max="200" />
+                <span asp-validation-for="Hours" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Message" class="form-label fw-semibold"></label>
+                <textarea asp-for="Message" class="form-control" rows="3"
+                          placeholder="e.g. I can prepare a launch campaign and a simple marketing plan."></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Pledge my knowledge</button>
+            <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

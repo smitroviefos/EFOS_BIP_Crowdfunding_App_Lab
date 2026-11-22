@@ -1,0 +1,18 @@
+@model int
+@{
+    var (title, text) = Model switch
+    {
+        404 => ("Page not found", "The page or project you are looking for does not exist – maybe it was deleted."),
+        403 => ("Access denied", "You do not have permission to open this page."),
+        _ => ($"Something went wrong ({Model})", "Please try again in a moment.")
+    };
+    ViewData["Title"] = title;
+}
+
+<div class="text-center py-5">
+    <p class="display-1 fw-bold text-muted mb-0">@Model</p>
+    <h1 class="mb-3">@title</h1>
+    <p class="lead text-muted">@text</p>
+    <a asp-controller="Projects" asp-action="Index" class="btn btn-primary mt-2">Browse projects</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary mt-2">Home</a>
+</div>

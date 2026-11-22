@@ -1,0 +1,13 @@
+@model Project
+@* Sprint 3: shows how many days are left until the deadline *@
+@if (Model.IsDeadlinePassed())
+{
+    <span class="deadline-info passed">Deadline passed</span>
+}
+else
+{
+    var days = Model.DaysLeft();
+    <span class="deadline-info @(days <= 7 ? "soon" : "")">
+        @(days == 0 ? "Last day today" : days == 1 ? "1 day left" : $"{days} days left")
+    </span>
+}

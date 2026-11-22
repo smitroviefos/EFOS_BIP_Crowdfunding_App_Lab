@@ -1,0 +1,17 @@
+@model Project
+@{
+    // Our version of the funding progress bar: how many of the needed skills have at least one pledge
+    // Sprint 3: the calculation moved to Models/ProjectRules.cs
+    var needed = Model.SkillsNeeded.Count;
+    var covered = Model.SkillsCoveredCount();
+    var percent = Model.SkillsCoveredPercent();
+}
+<div class="skills-progress">
+    <div class="d-flex justify-content-between small mb-1">
+        <span class="fw-semibold">@covered of @needed skills covered</span>
+        <span class="text-muted">@percent%</span>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Skills covered" aria-valuenow="@percent" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" style="width: @percent%"></div>
+    </div>
+</div>

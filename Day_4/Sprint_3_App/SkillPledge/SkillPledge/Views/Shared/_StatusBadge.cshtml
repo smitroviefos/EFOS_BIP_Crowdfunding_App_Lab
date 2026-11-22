@@ -1,0 +1,11 @@
+@model ProjectStatus
+@{
+    var (label, css) = Model switch
+    {
+        ProjectStatus.Open => ("Open", "text-bg-success"),
+        ProjectStatus.InProgress => ("In progress", "text-bg-warning"),
+        ProjectStatus.Completed => ("Completed", "text-bg-secondary"),
+        _ => (Model.ToString(), "text-bg-light")
+    };
+}
+<span class="badge @css">@label</span>
