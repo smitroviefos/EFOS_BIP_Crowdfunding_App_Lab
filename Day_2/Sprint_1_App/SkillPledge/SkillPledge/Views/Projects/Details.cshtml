@@ -1,0 +1,71 @@
+@model Project
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Projects</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+    </ol>
+</nav>
+
+<div class="d-flex align-items-center gap-3 mb-2">
+    <h1 class="mb-0">@Model.Title</h1>
+    <partial name="_StatusBadge" model="Model.Status" />
+</div>
+<p class="text-muted">
+    Posted by @(Model.Owner?.UserName ?? "unknown") on @Model.CreatedAt.ToLocalTime().ToString("d MMM yyyy")
+    · Deadline @Model.Deadline.ToString("d MMM yyyy")
+</p>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <h4>About the project</h4>
+        <p>@Model.Description</p>
+
+        <h4 class="mt-4">Pledges</h4>
+        @if (!Model.Pledges.Any())
+        {
+            <p class="text-muted">No pledges yet.</p>
+        }
+        else
+        {
+            <table class="table align-middle">
+                <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Skill</th>
+                    <th class="text-end">Hours</th>
+                    <th>Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var pledge in Model.Pledges.OrderByDescending(p => p.CreatedAt))
+                {
+                    <tr>
+                        <td>@pledge.User?.UserName</td>
+                        <td><span class="skill-chip">@pledge.Skill?.Name</span></td>
+                        <td class="text-end">@pledge.Hours</td>
+                        <td>@pledge.Message</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Skills needed</h5>
+                @foreach (var skill in Model.SkillsNeeded.OrderBy(s => s.Name))
+                {
+                    <span class="skill-chip">@skill.Name</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-outline-secondary mt-4">← Back to projects</a>

@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero text-center py-5">
+    <h1 class="display-5 fw-bold">Crowdfunding knowledge, not money</h1>
+    <p class="lead col-lg-8 mx-auto">
+        Post your project and list the skills it needs. Students from other fields back it
+        by pledging their knowledge and time – marketing, design, coding, law, finance…
+    </p>
+    <a asp-controller="Projects" asp-action="Index" class="btn btn-primary btn-lg mt-2">Browse projects</a>
+</section>
+
+<div class="row text-center g-4 mt-2">
+    <div class="col-md-4">
+        <h5>1 · Post a project</h5>
+        <p class="text-muted">Describe your idea and the skills you are missing.</p>
+    </div>
+    <div class="col-md-4">
+        <h5>2 · Get pledges</h5>
+        <p class="text-muted">Students offer a skill and a number of hours.</p>
+    </div>
+    <div class="col-md-4">
+        <h5>3 · Learn together</h5>
+        <p class="text-muted">Different study fields build real projects as one team.</p>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+
+# IDE folders and user files
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+
+# macOS
+.DS_Store
+
+# Local settings that may contain passwords
+appsettings.*.local.json
