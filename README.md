@@ -192,9 +192,9 @@ All slides are in PDF. Each day has its own folder in this repository.
 
 ## 🪟 Optional: set up at home on Windows
 
-1. **Install Visual Studio Community 2026** from [visualstudio.microsoft.com/vs/community](https://visualstudio.microsoft.com/vs/community/). In the installer, select the **ASP.NET and web development** workload.
-2. **Install SQL Server 2025** (Express or Developer) from the [SQL Server downloads page](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) and choose the **Basic** installation.
-3. **Install SSMS 22** from [Microsoft Learn](https://learn.microsoft.com/ssms/install/install) and connect to your server, e.g. `localhost\SQLEXPRESS` (Express) or `localhost` (Developer), with Windows authentication.
+1. **Install Visual Studio Community 2026** from [visualstudio.microsoft.com/vs/community](https://visualstudio.microsoft.com/vs/community/). In the installer, select the **ASP.NET and web development** and **Data storage and processing** workloads – the second one installs **SQL Server Express LocalDB**, the database the sample app uses. Already installed Visual Studio? Open the *Visual Studio Installer* → *Modify* and add the missing workload.
+2. *(Optional – LocalDB from step 1 is enough for the sample app.)* If you want a full SQL Server instance, install **SQL Server 2025** (Express or Developer) from the [SQL Server downloads page](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) and choose the **Basic** installation.
+3. **Install SSMS 22** from [Microsoft Learn](https://learn.microsoft.com/ssms/install/install) and connect with Windows authentication to `(localdb)\MSSQLLocalDB` (LocalDB), `localhost\SQLEXPRESS` (Express) or `localhost` (Developer).
 4. **Clone your team repository** in Visual Studio: *Git → Clone Repository*.
 
 ---
